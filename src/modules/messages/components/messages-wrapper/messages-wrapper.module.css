@@ -1,0 +1,14 @@
+.wrapper {
+	min-height: 500px;
+	flex: 1;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	border: 1px solid var(--primary-light);
+	padding: 20px;
+	border-radius: 10px;
+	list-style-type: none;
+	padding: 10px;
+	background-color: var(--ghost);
+}

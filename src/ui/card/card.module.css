@@ -1,0 +1,15 @@
+.card {
+	color: var(--light);
+	font-size: 1.2rem;
+	padding: 10px 20px;
+	border-radius: 10px;
+	white-space: pre-wrap;
+}
+
+.primary {
+	background-color: var(--primary);
+}
+
+.secondary {
+	background-color: var(--secondary);
+}

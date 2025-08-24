@@ -1,0 +1,8 @@
+.card {
+	width: 50%;
+}
+
+.user {
+	display: flex;
+	justify-content: flex-end;
+}

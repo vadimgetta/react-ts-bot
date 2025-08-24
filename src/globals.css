@@ -1,0 +1,27 @@
+/* Не стал подключать SASS хотя обычно использую SCSS */
+
+:root {
+	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+	--primary: #155dfc;
+	--primary-dark: #0d3999;
+	--primary-light: #79a3fe;
+	--secondary: #7008e7;
+	--light: #faf5ff;
+	--dark: #1d293d;
+	--ghost: #e5e5e5;
+}
+body {
+	background: var(--dark);
+	color: var(--light);
+}
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+a {
+	font-weight: 500;
+	text-decoration: inherit;
+}

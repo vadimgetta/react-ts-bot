@@ -1,5 +1,5 @@
 import styles from "./chat.module.css";
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import type { IMessage } from "@/types/message";
 
 import { Textarea } from "@/ui/textarea/textarea";
@@ -54,7 +54,13 @@ export const Chat = () => {
 		textAreaRef.current?.focus();
 
 	};
-
+	const handleSubmitOnEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+		//для того что бы отправить сообщение при нажатии Enter в textarea
+		if (e.key === "Enter" && !e.shiftKey) {
+			e.preventDefault();
+			e.currentTarget.form?.requestSubmit();
+		}
+	}
 	return (
 		<main className={styles.main}>
 			<MessageBlock isLoading={isLoading} messages={messages} />
@@ -64,12 +70,7 @@ export const Chat = () => {
 					required
 					name="message"
 					ref={textAreaRef}
-					onKeyDown={(e) => {
-						if (e.key === "Enter" && !e.shiftKey) {
-							e.preventDefault();
-							e.currentTarget.form?.requestSubmit();
-						}
-					}}
+					onKeyDown={handleSubmitOnEnter}
 				/>
 				<Button disabled={isLoading} type="submit">Send</Button>
 			</form>
@@ -112,7 +113,13 @@ export const Chat = () => {
 // 	const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
 // 		setText(e.target.value);
 // 	};
-
+// 	const handleSubmitOnEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+// 		//для того что бы отправить сообщение при нажатии Enter в textarea
+// 		if (e.key === "Enter" && !e.shiftKey) {
+// 			e.preventDefault();
+// 			e.currentTarget.form?.requestSubmit();
+// 		}
+// 	}
 // 	return (
 // 		<main className={styles.main}>
 // 			<MessageBlock isLoading={isLoading} messages={messages} />
@@ -122,14 +129,10 @@ export const Chat = () => {
 // 					required
 // 					name="message"
 // 					ref={textAreaRef}
-// 					onKeyDown={(e) => {
-// 						if (e.key === "Enter" && !e.shiftKey) {
-// 							e.preventDefault();
-// 							e.currentTarget.form?.requestSubmit();
-// 						}
-// 					}}
+// 					onChange={handleChange}
+// 					onKeyDown={handleSubmitOnEnter}
 // 				/>
-// 				<Button disabled={isLoading} type="submit">Send</Button>
+// 				<Button disabled={isLoading || text.trim().length === 0} type="submit">Send</Button>
 // 			</form>
 // 		</main>
 // 	);
